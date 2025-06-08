@@ -8,9 +8,17 @@
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
-      version = "1.12.5b";
-      download.url = "https://github.com/zen-browser/desktop/releases/download/${version}/zen.linux-x86_64.tar.xz";
-	    download.sha256 = "0sr73i678vflf2wx1knbnx473wp28lw6cg3lf5qxg54g4nn2qawg";
+      version = "1.12.10b";
+      downloadUrl = {
+        "specific" = {
+	  url = "https://github.com/zen-browser/desktop/releases/download/${version}/zen.linux-specific.tar.xz";
+	  sha256 = "sha256:0ngmv78vvblgc9g50s90qbhy8qn5qsrhxdzgkggs10vmdlcfr47d";
+	};
+	"generic" = {
+	  url = "https://github.com/zen-browser/desktop/releases/download/${version}/zen.linux-generic.tar.xz";
+	  sha256 = "sha256:0ngmv78vvblgc9g50s90qbhy8qn5qsrhxdzgkggs10vmdlcfr47d";
+	};
+      };
 
       pkgs = import nixpkgs {
         inherit system;

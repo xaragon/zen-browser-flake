@@ -2,15 +2,15 @@
   description = "Zen Browser";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
-      version = "1.16.2b";
+      version = "1.17.3b";
       download.url = "https://github.com/zen-browser/desktop/releases/download/${version}/zen.linux-x86_64.tar.xz";
-	    download.sha256 = "12m5ymcm1iwg5jmd4p0cfx15hhv0kfrdqz78arv3lh20n3230ymn";
+	    download.sha256 = "1f13lbvgzq4j7lva69d70vd29pc4g4jy46xnxm0gj6zyc0zdsg7j";
 
       pkgs = import nixpkgs {
         inherit system;
@@ -40,7 +40,7 @@
 
 		  phases = [ "installPhase" "fixupPhase" ];
 
-		  nativeBuildInputs = [ pkgs.makeWrapper pkgs.copyDesktopItems pkgs.wrapGAppsHook ] ;
+		  nativeBuildInputs = [ pkgs.makeWrapper pkgs.copyDesktopItems pkgs.wrapGAppsHook3 ] ;
 
       installPhase = ''
         mkdir -p $out/bin && cp -r $src/* $out/bin
